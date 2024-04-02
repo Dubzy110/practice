@@ -1,0 +1,5 @@
+format = new thing='old thing'
+
+alias gs='git status'
+
+alias cd..='cd ..'

@@ -1,0 +1,8 @@
+var = [] = array of obj
+
+.push(_, _) = puts obj into an array
+
+.slice(_, _) = removes obj from specified positions in an array useing zero based indexing
+
+.splice(_, _, _) = first number the starting position, zero based. second number is count, not zero based, third is replacement, can be multiple numbers, NAN, or boolean
+

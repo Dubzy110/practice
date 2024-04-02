@@ -1,0 +1,35 @@
+upon starting a new project:
+
+npm init
+npm i
+npm i "dependencies"
+
+
+
+
+vi ~/."file" = mess with alias's in the git thing
+i = insert
+escape
+:wq = save
+enter
+
+source ~/.bash_profile = how to access bash profile thing
+
+cd ./ change dir more dots go back
+
+ls = list files in a dir
+
+ls -la ~/ = list and list all
+
+mkdir = make a dir
+
+rm -rf = remove forcefully and recursivly mostly dir
+
+history = shows history
+
+which "node" = search location
+
+touch = makes a file
+
+mv = move
+
