@@ -11,3 +11,4 @@ $ git checkout main
 $ git pull
 $ git checkout -b <newBranchName>
 commit to the branch until its ready to merge to the main branch
+$ git push
