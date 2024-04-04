@@ -11,3 +11,6 @@ $ git checkout main
 $ git pull
 $ git checkout -b <newBranchName>
 commit to the branch until its ready to merge to the main branch
+$ git push
+if its the first time it'll give an error and the command to fix it
+copy and paste the command (example: git push --set-upstream origin dev)
