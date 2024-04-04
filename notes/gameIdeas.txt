@@ -1,0 +1,41 @@
+idea
+
+the game is played in a top down view above the player character.
+
+should i render vision in a similar way to darkwood?
+
+this game could be catigorized as a horror game.
+
+the player is lost in the forest.
+
+they are being hunted.
+
+the goal is to find food and shelter for the night.
+
+the time limit is sundown(9:00PM).
+
+1 ingame hour is one real world minute.
+
+1 ingame minute is one real world second
+
+after sundown two wendigo spawn.
+
+the wendigo constantly know where the player is.
+
+the wendigo will respawn if killed.
+
+the player will die one ingame at midnight(12:00AM) due to freezing temperatures.
+
+the player can wait for morning(6:00AM) in a shelter
+
+the game ends after the player dies or the player leaves the forest.
+
+there will need to be a food system to force the player to explore.
+
+stealth changes how the enemies load in visually.
+
+the enemies could see the player and the player could not be the players fault.
+
+make an inventory.
+
+the player has to have food in their shelter or they will starve at night.

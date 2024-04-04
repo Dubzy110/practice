@@ -4,9 +4,6 @@ npm init
 npm i
 npm i "dependencies"
 
-
-
-
 vi ~/."file" = mess with alias's in the git thing
 i = insert
 escape
