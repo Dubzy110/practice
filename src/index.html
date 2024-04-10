@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+
+<body>
+<canvas id="canvas" width = 600; height = 600; >
+
+    <img src = "https://static1.bigstockphoto.com/0/1/3/large1500/310110796.jpg" id="table">
+    <!-- the stupid black thing is 64 px tall -->
+
+    <img src = "https://p7.hiclipart.com/preview/641/1009/262/ping-pong-paddles-sets-clip-art-ping-pong.jpg" id="paddleImage">
+    <!-- silly paddle thing -->
+
+</canvas>
+<script>
+
+    const canvas = document.getElementById("canvas")
+    const context = canvas.getContext("2d")
+
+    const table = document.getElementById("table")
+    const paddleImage = document.getElementById("paddleImage")
+
+    const getRandomColor = () => Math.floor(Math.random()*255)
+
+    let secondsPassed;
+    let oldTimeStamp;
+    let fps;
+
+    let xDir = 'right'
+    let yDir = 'down'
+
+    let color1 = getRandomColor()
+    
+
+    class Paddle {
+        constructor(x, y) {
+            this.x = x
+            this.y = y
+            this.img = paddleImage
+            this.speed = 10
+            this.dir = ""
+        }
+        update() {
+            if (this.dir === "up") {
+                leftPaddle.y -= leftPaddle.speed
+            } else if (this.dir === "down") {
+                leftPaddle.y += leftPaddle.speed
+            }
+        }
+        draw() {
+            context.drawImage(this.img, 0, 0, this.img.width, this.img.height, this.x, this.y, 100, 100)
+        }
+    }
+
+    class ball {
+        constructor(x, y) {
+            this.x = x
+            this.y = y
+            this.ballSpeed = 3
+            this.radius = 10
+            this.color = color1
+        }
+
+        update() {
+            if (xDir === "right") {
+                this.x = Math.min(this.x + this.ballSpeed, canvas.width - 40 - ballFriend.radius)
+            } else {
+                this.x = Math.max(this.x - this.ballSpeed, 50 + ballFriend.radius)
+                //left
+            }
+
+            if (yDir === "down") {
+                this.y = Math.min(this.y + this.ballSpeed, canvas.height - 113 - ballFriend.radius)
+            } else {
+                this.y = Math.max(this.y - this.ballSpeed, 113 + ballFriend.radius)
+            }
+
+            if (this.x === (50 + ballFriend.radius)) {
+                xDir = "right"
+            }
+            if (this.x === (canvas.width - 40 - ballFriend.radius)) {
+                xDir = "left"
+            }
+            if (this.y === (113 + ballFriend.radius)) {
+                yDir = "down"
+            }
+            if (this.y === (canvas.height - 113 - ballFriend.radius)) {
+                yDir = "up"
+            }
+        }
+        collision() {
+           console.log("to be done at a later date.")
+        }
+        draw(){
+            context.fillStyle = `rgb(${color1})`
+            context.beginPath()
+            context.arc(ballFriend.x, ballFriend.y, ballFriend.radius, 0, 2 * Math.PI)
+            context.stroke()
+            context.fill()
+        }
+    }
+
+    const ballFriend = new ball(150, 150)
+    const leftPaddle = new Paddle(10, 20)
+
+    const draw = () => {
+        context.clearRect(0, 0, canvas.width, canvas.height)
+
+        context.drawImage(table, 0, 0, canvas.width, canvas.height + 64)
+
+        leftPaddle.update()
+        leftPaddle.draw()
+
+        ballFriend.update()
+        ballFriend.draw()
+    }
+
+    function gameLoop(timeStamp) {
+        secondsPassed = (timeStamp - oldTimeStamp) / 1000
+        oldTimeStamp = timeStamp
+
+        fps = Math.round(1 / secondsPassed)
+
+        draw()
+        context.font = 'bold 27px arial'
+        context.fillStyle = 'black'
+        context.fillText("FPS: " + fps, 10, 30)
+
+        window.requestAnimationFrame(gameLoop)
+    }
+
+document.addEventListener("keyup", ((event) => {
+    if (event.keyCode === 87) {
+        //87 = w
+        leftPaddle.dir = ""
+    } else if (event.keyCode === 83) {
+        //83 = s
+        leftPaddle.dir = ""
+    }
+}))
+
+document.addEventListener("keydown", ((event) => {
+    console.log(event.keyCode)
+
+    if (event.keyCode === 87) {
+        //87 = w
+        leftPaddle.dir = "up"
+    } else if (event.keyCode === 83) {
+        //83 = s
+        leftPaddle.dir = "down"
+    } else if (event.keyCode === 65) {
+        //65 = a
+        xDir = "left"
+    } else if (event.keyCode == 68) {
+        //68 = d
+        xDir = "right"
+    }
+}))
+
+
+
+//drawImage('image', image x position, image y position, image width, image height, drawing x, drawing, y, drawing width, drawing height)
+
+// up arrow = 38
+// left arrow = 39
+// right arrow = 40
+// down arrow = 37
+
+gameLoop()
+</script>
+</body>
+
+</html>
